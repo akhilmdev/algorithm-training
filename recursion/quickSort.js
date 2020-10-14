@@ -1,5 +1,5 @@
 function quickSort(array) {
-    
+
     let startIndex = 0;
     let pivotIndex = array.length - 1;
     while (startIndex < pivotIndex) {
