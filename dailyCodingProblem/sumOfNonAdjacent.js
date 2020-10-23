@@ -28,5 +28,29 @@ function LargestSumOfNonAdjacent(array) {
 // time  => O(2^log(n))
 // space => O(1)
 
+function sumOfNonAdjacentLinear(array) {
+    let incl = array[0];
+    let excl = 0;
+
+    for(let i = 1; i < array.length; i++) {
+        const temp = incl;
+        incl = Math.max(excl + array[i], incl);
+        excl = temp;
+    }
+    return incl;
+
+}
+
 const sum = sumOfNonAdjacent([5, 5, 10, 100, 10, 5, 5, 8, 2, 9, 1, 2, 0, 7, 2, 0])
 console.log(sum);
+const sum1 = sumOfNonAdjacentLinear([5, 5, 10, 100, 10, 5, 5, 8, 2, 9, 1, 2, 0, 7, 2, 0])
+console.log(sum1);
+
+/**
+ * [5, 1, 1, 5]
+ * 0 => 5 0
+ * 1 => 5, 5
+ * 2 => 6, 5
+ * 3 => 10, 6
+ *  */
+
