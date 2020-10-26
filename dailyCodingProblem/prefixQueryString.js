@@ -18,7 +18,7 @@ function PrefixQueryString(query, data) {
     return returnArray
 }
 
-// time  => O(n)
+// time  => O(n * m)
 // space => O(n)
 
 console.log(PrefixQueryString('de', ['dog', 'deer', 'deal']))
