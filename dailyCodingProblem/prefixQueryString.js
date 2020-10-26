@@ -11,7 +11,10 @@ function PrefixQueryString(query, data) {
     for(let i = 0; i< data.length; i++) {
         let isPassed = true;
         for(let j = 0; j < querryArray.length; j++) {
-            if (querryArray[j] !== data[i][j]) isPassed = false;
+            if (querryArray[j] !== data[i][j]) {
+                isPassed = false;
+                break;
+            }
         }
         if (isPassed) returnArray.push(data[i]);
     }
