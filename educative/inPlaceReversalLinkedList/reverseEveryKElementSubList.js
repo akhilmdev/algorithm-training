@@ -16,6 +16,33 @@ class Node {
 }
 
 function reverseEveryKElementSubList(head, k) {
+
+    let currentNode = head;
+    let prevNode = null;
+
+    while(true) {
+        const tail = currentNode;
+        
+        let i = 0;
+        const nextNode = null;
+        while (currentNode !== nul && i < k) {
+            nextNode = currentNode.next;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+
+        if (tail === null) {
+            head = prevNode;
+        } else {
+            tail.next = currentNode;
+        }
+    }
+
+}
+
+
+function reverseEveryKElementSubList1(head, k) {
     let index = 0;
     let currentNode = head;
     let subTail = head;
