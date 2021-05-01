@@ -21,35 +21,20 @@ function BinaryTreeLevelOrderTraversal(root) {
     
     while (queue.size > 0) {
         let queueIndex = 0;
-        
-        while(queueIndex < queue.size) {
+        let levelTraversal = [];
+        const queueSize = queue.size;
+        while(queueIndex < queueSize) {
             const currentNode = queue.dequeue();
-            orderTraversal.push(currentNode.value)
+            levelTraversal.push(currentNode.value)
             queueIndex += 1;
+            
+            if (currentNode.left) queue.enqueue(currentNode.left);
+            if (currentNode.right) queue.enqueue(currentNode.right);
         }
-
-
-        index += 1;
+        orderTraversal.push(levelTraversal);
     }
 
-
-    // orderTraversal.push([root]);
-
-    // let levelIndex = 0;
-    // while(orderTraversal[levelIndex] && orderTraversal[levelIndex].length) {
-    //     let index = 0;
-    //     const levelTraversal = [];
-    //     while(orderTraversal[levelIndex][index]) {
-    //         if (orderTraversal[levelIndex][index].left) levelTraversal.push(orderTraversal[levelIndex][index].left)
-    //         if (orderTraversal[levelIndex][index].right) levelTraversal.push(orderTraversal[levelIndex][index].right)
-    //         index += 1;
-    //     }
-
-    //     console.log(orderTraversal)
-    //     if (levelTraversal && levelTraversal.length) orderTraversal.push(levelTraversal);
-    //     levelIndex += 1;
-    // }
-    // return orderTraversal;
+    return orderTraversal;
     
 }
 

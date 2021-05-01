@@ -13,13 +13,12 @@ class Queue {
     }
 
     enqueue = (value) => {
-        const newNode = new Node(value);
         if (this.bottom === null) {
-            this.top = newNode;
-            this.bottom = newNode;
+            this.top = value;
+            this.bottom = value;
         } else {
-            this.bottom.next = newNode;
-            this.bottom = newNode;
+            this.bottom.next = value;
+            this.bottom = value;
         }
         this.size += 1;
     }
@@ -31,6 +30,7 @@ class Queue {
         if (this.top === this.bottom) {
             this.top = null;
             this.bottom = null;
+            this.size -= 1;
             return top
         }
         this.top = this.top.next;
