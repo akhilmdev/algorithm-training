@@ -1,5 +1,8 @@
-// Find the minimum depth of a binary tree. The minimum depth is
-// the number of nodes along the shortest path from the root node to the nearest leaf node.
+// Right View of a Binary Tree (easy) #
+// Given a binary tree, return an array containing nodes in its right view.
+// The right view of a binary tree is the set of nodes visible when the tree
+// is seen from the right side.
+
 const { Queue } = require('./queue');
 
 class TreeNode {
@@ -9,40 +12,39 @@ class TreeNode {
       this.left = null;
       this.right = null; 
     }
-  };
+};
 
 
+function RightViewBinaryTree(root) {
 
-function MinimumDepthBinaryTree(root) {
-    if (root === null) return 0;
     const queue = new Queue();
+    const rightView = [];
 
-    let minDepth = 1;
     queue.enqueue(root);
 
     while(queue.size > 0) {
         let levelIndex = 0;
         const queueSize = queue.size;
-        
+
         while(levelIndex < queueSize) {
-            const currnetNode = queue.dequeue();
-            
-            if (currnetNode.left === null || currnetNode.right === null) {
-                return minDepth;
+            const currentNode = queue.dequeue();
+
+            if (levelIndex === queueSize - 1) {
+                rightView.push(currentNode.value);
             }
-            if (currnetNode.left) queue.enqueue(currnetNode.left);
-            if (currnetNode.right) queue.enqueue(currnetNode.right);
+
+            if (currentNode.left) queue.enqueue(currentNode.left);
+            if (currentNode.right) queue.enqueue(currentNode.right);
             levelIndex += 1;
         }
-        minDepth += 1;
-        
     }
-    return minDepth;
+
+    return rightView;
+
 }
 
 // Time => O(N)
 // Space => O(N)
-
 
 
 var root = new TreeNode(1);
@@ -59,4 +61,4 @@ root.left.left.left = new TreeNode(6);
 root.left.right.left = new TreeNode(7);
 
 // root.right.right = new TreeNode(7);
-console.log(`Level order traversal: ${MinimumDepthBinaryTree(root)}`);
+console.log(`Level order traversal: ${RightViewBinaryTree(root)}`);

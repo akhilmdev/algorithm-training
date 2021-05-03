@@ -3,6 +3,16 @@ class Node {
         this.value = value;
         this.next = next;
     }
+
+    log(head) {
+        let list = '';
+        while(head !== null) {
+            list = list + ' => ' + head.value;
+            head = head.next
+        }
+        list += ' => ' + null;
+        return list;
+    }
 }
 
 class Queue {
