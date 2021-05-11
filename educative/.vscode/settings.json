@@ -1,0 +1,20 @@
+{
+    "editor.suggest.showClasses": false,
+    "editor.suggest.showConstants": false,
+    "editor.suggest.showCustomcolors": false,
+    "editor.suggest.showEnumMembers": false,
+    "autoimport.autoComplete": false,
+    "eslint.run": "onSave",
+    "typescript.suggest.includeCompletionsWithSnippetText": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.suggest.showColors": false,
+    "editor.suggest.showEvents": false,
+    "editor.suggest.showFields": false,
+    "editor.suggest.showFiles": false,
+    "editor.suggest.showFunctions": false,
+    "editor.suggest.showIcons": false,
+    "editor.suggest.showInlineDetails": false,
+    "editor.quickSuggestionsDelay": 1000,
+    "editor.wordBasedSuggestions": false,
+    "editor.suggestOnTriggerCharacters": false
+}
