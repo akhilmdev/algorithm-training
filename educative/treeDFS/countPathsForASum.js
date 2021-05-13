@@ -14,9 +14,40 @@ class TreeNode {
 
 
 const count_paths = function (root, S) {
-    // TODO: Write your code here
-    return -1
+    const pathArray = [];
+
+    return findPathCount(root, S, pathArray);
+
 };
+
+
+const findPathCount = (root, s, pathArray = []) => {
+
+    if (root === null) return 0;
+
+    pathArray.push(root.value);
+
+    let count = 0;
+    let sum = 0;
+
+    for (let i = pathArray.length - 1; i >= 0; i--) {
+        sum += pathArray[i];
+
+        if (sum === s) {
+            count += 1;
+        }
+    }
+
+    count += findPathCount(root.left, s, pathArray);
+    count += findPathCount(root.right, s, pathArray);
+    pathArray.pop()
+
+    return count;
+
+}
+
+// time => O(N^2) for balanced tree and O(N * log(N)) for skewed tree
+// space => O(N) 
 
 
 
