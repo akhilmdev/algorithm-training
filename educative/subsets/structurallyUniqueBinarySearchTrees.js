@@ -59,5 +59,8 @@ function searchTree(start, end) {
     return results;
 }
 
+// space => O(N * 2^N)
+// time => O(2^N)
+
 console.log(UniqueBinarySerachTree(3).length)
 console.log(UniqueBinarySerachTree(1).length)
