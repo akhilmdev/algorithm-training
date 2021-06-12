@@ -12,20 +12,26 @@
 // Output: 5
 // Explanation: There will be 5 unique BSTs that can store numbers from 1 to 3.
 
-function CountUniqeBST(limit) {
-    if (limit <= 1) return 1;
+function CountUniqeBST(limit, memo = []) {
+    if (memo[limit]) return memo[limit]; //memorization
+    if (limit <= 1) return 1; 
     let count = 0;
     for(let i = 1; i <= limit; i++) {
         const left = CountUniqeBST(i - 1);
         const right = CountUniqeBST(limit - i);
-
         count += left * right;
     }
+    memo[limit] = count;  //memorization
     return count;
 }
 
 // Time => O(N * 2^N)
 // Space => O(2^N)
+
+//memorization
+// Time => O(N^2)
+// Space => O(n)
+
 
 console.log(CountUniqeBST(3))
 console.log(CountUniqeBST(1))
