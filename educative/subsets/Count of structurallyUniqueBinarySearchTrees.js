@@ -24,6 +24,9 @@ function CountUniqeBST(limit) {
     return count;
 }
 
+// Time => O(N * 2^N)
+// Space => O(2^N)
+
 console.log(CountUniqeBST(3))
 console.log(CountUniqeBST(1))
 console.log(CountUniqeBST(2))
