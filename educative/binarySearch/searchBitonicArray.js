@@ -25,20 +25,46 @@ function searchBitonicArray(arr, key) {
     let start = 0;
     let end = arr.length - 1;
 
-    while(start <= end) {
+    while(start < end) {
         const mid = start + Math.floor((end - start) / 2);
 
-        if (start === end) return null;
-
-        if (arr[mid] === key) {
-            return mid;
+        if (arr[mid] < arr[mid + 1]) {
+            start = mid + 1;
+        } else {
+            end = mid;
         }
-
-        const left = searchBitonicArray(arr.substring(0, mid), key);
-        const right = searchBitonicArray(arr.substring(mid), key);
-
-        return left || right;
-
     }
+
+    const largest = start;
+    start = 0;
+    end = arr.length - 1;
+
+    while(start < end) {
+        const mid = start + Math.floor((end - start) / 2);
+
+        if (arr[mid] === key) return mid;
+        if (mid < largest) {
+            if (arr[mid] < key) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        } else {
+            if (arr[mid] > key) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+    }
+    return start;
 }
-    
+
+// Time => O(log(N))
+// Space => O(1)
+
+
+console.log(searchBitonicArray([1, 3, 8, 4, 3], 4))
+console.log(searchBitonicArray([3, 8, 3, 1], 8))
+console.log(searchBitonicArray([1, 3, 8, 12], 12))
+console.log(searchBitonicArray([10, 9, 8], 10))
